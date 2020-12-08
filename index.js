@@ -12,16 +12,15 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json()); //gives access to req.body
 app.use(cors());
 
-// if (process.env.NODE_ENV === 'production') {
-//     //server static content
-//     //npm run build
-//     app.use(express.static(path.join(__dirname, 'client/build')));
-// }
+if (process.env.NODE_ENV === 'production') {
+    //server static content
+    //npm run build
+    app.use(express.static(path.join(__dirname, 'client/build')));
+}
 
 //ROUTES//
 
 // get all todos
-
 app.get('/todos', async(req, res) => {
     try {
         const allTodos = await pool.query('SELECT * FROM todo');
@@ -33,7 +32,6 @@ app.get('/todos', async(req, res) => {
 });
 
 //get a todo
-
 app.get('/todos/:id', async(req, res) => {
     const {id} = req.params
     try {
@@ -46,7 +44,6 @@ app.get('/todos/:id', async(req, res) => {
 });
 
 //create a todo
-
 app.post('/todos', async(req, res) => {
     try {
         const { description } = req.body;
@@ -59,7 +56,6 @@ app.post('/todos', async(req, res) => {
 });
 
 // update a todo
-
 app.put('/todos/:id', async(req, res) => {
     try {
         const { id } = req.params; //WHERE
@@ -74,7 +70,6 @@ app.put('/todos/:id', async(req, res) => {
 });
 
 // delete a todo
-
 app.delete('/todos/:id', async(req, res) => {
     try {
         const { id } = req.params;
