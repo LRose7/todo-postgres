@@ -2,13 +2,18 @@
 const Pool = require('pg').Pool;
 require('dotenv').config();
 
-const pool = new Pool({
-    user: `${process.env.PGUSER}`,
-    password: `${process.env.PGPASSWORD}`,
-    database: `${process.env.PGDATABASE}`,
-    host: `${process.env.PGHOST}`,
-    port: `${process.env.PGPORT}`
+const devConfig = {
+    user: process.env.PG_USER,
+    password: process.env.PG_PASSWORD,
+    database: process.env.PG_DATABASE,
+    host: process.env.PG_HOST,
+    port: process.env.PG_PORT
+}
 
-});
+const proConfig = {
+    connectionString : process.env.Database_url //heroku addons
+}
+
+const pool = new Pool(process.env.NODE_ENV === 'production' ? proConfig : devConfig);
 
 module.exports = pool;
