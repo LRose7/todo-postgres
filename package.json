@@ -1,0 +1,29 @@
+{
+  "name": "todo-postgres",
+  "version": "1.0.0",
+  "description": "A Full stack todo list.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LRose7/todo-postgres.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LRose7/todo-postgres/issues"
+  },
+  "homepage": "https://github.com/LRose7/todo-postgres#readme",
+  "dependencies": {
+    "and": "0.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
